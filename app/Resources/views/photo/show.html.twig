@@ -11,8 +11,10 @@
             {% for photo in photos %}
                 <div class="col-xs-10">
                     <div class="photo" >
-                        <img src="{{ photo.file }}" alt="" >
+                        <img src="/uploads/photos/{{ photo.file }}" alt="" >
                     </div>
+                    <b>{{ photo.title }}</b>
+                    <p>{{ photo.description }}</p>
                 </div>
             {% endfor %}
         </div>

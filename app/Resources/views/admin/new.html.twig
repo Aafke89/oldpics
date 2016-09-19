@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+{% use "form_div_layout.html.twig" %}
+{% block body %}
+   <div class="text-center">
+   <h1>Add your photo's here</h1>
+   </div>
+   {{ form_start(form) }}
+   {{ form_row(form.title) }}
+   {{ form_row(form.description) }}
+   {{ form_row(form.file) }}
+   {{ form_row(form.folder) }}
+   <button type="submit" class="btn btn-primary" formnovalidate>Add</button>
+   {{ form_end(form) }}
+{% endblock %}

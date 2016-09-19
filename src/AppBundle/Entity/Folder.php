@@ -48,6 +48,11 @@ class Folder
         }
     }
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * @return mixed
      */

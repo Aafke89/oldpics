@@ -34,10 +34,10 @@ class FolderController extends Controller
     }
 
     /**
-     * @Route("/folder/{folderId}/{page}", name="folder_photo_show")
-     * @Route("/folder/{folderId}/?page={page}", name="folder_photo_show")
+     * @Route("/folder/{folderId}/{photo}", name="folder_photo_show")
+     * @Route("/folder/{folderId}/?photo={photo}", name="folder_photo_show")
      */
-    public function showPhotoAction(Request $request, Folder $folderId, $page = 1)
+    public function showPhotoAction(Request $request, Folder $folderId, $photo = 1)
     {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('AppBundle:Photo')->createQueryBuilder('photo');
@@ -52,7 +52,7 @@ class FolderController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
-            $request->query->getInt('page', $page)/*page number*/,
+            $request->query->getInt('page', $photo)/*page number*/,
             $request->query->getInt('limit', 1)
         );
 
