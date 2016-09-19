@@ -41,8 +41,10 @@ class FolderController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('AppBundle:Photo')->createQueryBuilder('photo');
-        $queryBuilder->andWhere('photo.folder = :folder')
+        $queryBuilder
+            ->andWhere('photo.folder = :folder')
             ->setParameter('folder', $folderId)
+            ->orderBy('photo.createdAt', 'DESC')
             ->getQuery()
             ->execute()
         ;
@@ -52,7 +54,7 @@ class FolderController extends Controller
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
-            $request->query->getInt('page', $photo)/*page number*/,
+            $request->query->getInt('photo', $photo)/*page number*/,
             $request->query->getInt('limit', 1)
         );
 
@@ -63,3 +65,4 @@ class FolderController extends Controller
         ]);
     }
 }
+
