@@ -97,6 +97,16 @@ class Folder
         $this->photos = $photos;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+
 
 
 

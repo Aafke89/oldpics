@@ -10,7 +10,7 @@
             <div class="folder-preview">
                 <b>{{ folder.title }}</b><br>
                 <div class="folder-preview-image">
-                <a href="#"><img src="{{ folder.photos|first.file }}" alt="" width="150px"height="150px"></a>
+                <a href="{{ path('folder_show', {'folderId': folder.id }) }}"><img src="{{ folder.photos|first.file }}" alt="" width="150px"height="150px"></a>
                 </div>
                 <div class="folder-preview-title">
                     {{ folder.description }}
