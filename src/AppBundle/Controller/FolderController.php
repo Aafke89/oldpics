@@ -9,6 +9,7 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Folder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -17,13 +18,15 @@ class FolderController extends Controller
     /**
      * @Route("/folder/{folderId}", name="folder_show")
      */
-    public function showAction($folderId)
+    public function showAction(Folder $folderId)
     {
+
         $em = $this->getDoctrine()->getManager();
-        $folder = $em->getRepository('AppBundle:Folder')
-            ->find($folderId);
+        $photos = $em->getRepository('AppBundle:Photo')
+            ->findAllPhotosFromFolder($folderId);
         return $this->render("folder/show.html.twig", [
-            'folder' => $folder,
+            'photos' => $photos,
+            'folder' => $folderId
         ]);
     }
 }

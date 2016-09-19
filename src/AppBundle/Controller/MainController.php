@@ -17,7 +17,7 @@ class MainController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $folders = $em->getRepository('AppBundle:Folder')
-            ->findAll();
+            ->findAllRecentFolders();
         return $this->render('main/homepage.html.twig',[
             'folders' => $folders,
     ]);

@@ -6,13 +6,12 @@
  * Time: 11:27
  */
 
-namespace Repository;
+namespace AppBundle\Repository;
 
 use AppBundle\Entity\Folder;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * Class FolderRepository
  * @return Folder[]
  */
 class FolderRepository extends EntityRepository

@@ -10,12 +10,11 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Folder
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\FolderRepository")
  * @ORM\Table(name="folder")
  */
 class Folder
