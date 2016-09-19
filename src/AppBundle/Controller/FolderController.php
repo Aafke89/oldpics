@@ -12,6 +12,8 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Folder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class FolderController extends Controller
 {
@@ -24,8 +26,39 @@ class FolderController extends Controller
         $em = $this->getDoctrine()->getManager();
         $photos = $em->getRepository('AppBundle:Photo')
             ->findAllPhotosFromFolder($folderId);
+
         return $this->render("folder/show.html.twig", [
             'photos' => $photos,
+            'folder' => $folderId
+        ]);
+    }
+
+    /**
+     * @Route("/folder/{folderId}/{page}", name="folder_photo_show")
+     * @Route("/folder/{folderId}/?page={page}", name="folder_photo_show")
+     */
+    public function showPhotoAction(Request $request, Folder $folderId, $page = 1)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $queryBuilder = $em->getRepository('AppBundle:Photo')->createQueryBuilder('photo');
+        $queryBuilder->andWhere('photo.folder = :folder')
+            ->setParameter('folder', $folderId)
+            ->getQuery()
+            ->execute()
+        ;
+
+        $query = $queryBuilder->getQuery();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', $page)/*page number*/,
+            $request->query->getInt('limit', 1)
+        );
+
+
+        return $this->render("photo/show.html.twig", [
+            'photos' => $pagination,
             'folder' => $folderId
         ]);
     }

@@ -19,27 +19,15 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class PhotoRepository extends EntityRepository
 {
-    public function findAllPhotosFromFolder(Folder $folder, $currentPage = 1)
+    public function findAllPhotosFromFolder(Folder $folder)
     {
-        return  $this->createQueryBuilder('photo')
+        return $this->createQueryBuilder('photo')
             ->andWhere('photo.folder = :folder')
             ->setParameter('folder', $folder)
             ->getQuery()
             ->execute()
         ;
 
-//        $paginator = $this->paginate($query, $currentPage);
-//
-//    return $paginator;
     }
-
-//    public function paginate($query, $page = 1, $limit = 1)
-//    {
-//        $paginator = new Paginator($query);
-//        $paginator->getQuery()
-//            ->setFirstResult($limit * ($page - 1))
-//            ->setMaxResults($limit);
-//        return $paginator;
-//    }
 
 }
