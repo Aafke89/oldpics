@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}AquaNote!{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="{{ asset('https://use.fontawesome.com/0ec60d3fcd.js') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+<div class="main-content">
+    {% for msg in app.session.flashBag.get('success') %}
+        <div class="alert alert-success">{{ msg }}</div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+</div>
+{% block javascripts %}
+    <script src="{{ asset('js/main.js') }}"></script>
+{% endblock %}
+</body>
 </html>

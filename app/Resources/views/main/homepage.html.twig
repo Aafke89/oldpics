@@ -1,1 +1,26 @@
-<h1>Hoi!</h1>
+{% extends 'base.html.twig' %}
+{% block body %}
+    <br><br><br>
+<div class="text-center"><h1>Hoi!</h1>
+    <br><br><br><br>
+<div class="container">
+    <div class="row">
+        {% for folder in folders  %}
+        <div class="col-xs-3">
+            <div class="folder-preview">
+                <b>{{ folder.title }}</b><br>
+                <div class="folder-preview-image">
+                <a href="#"><img src="{{ folder.photos|first.file }}" alt="" width="150px"height="150px"></a>
+                </div>
+                <div class="folder-preview-title">
+                    {{ folder.description }}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
