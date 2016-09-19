@@ -24,6 +24,7 @@ class PhotoRepository extends EntityRepository
         return $this->createQueryBuilder('photo')
             ->andWhere('photo.folder = :folder')
             ->setParameter('folder', $folder)
+            ->orderBy('photo.createdAt', 'DESC')
             ->getQuery()
             ->execute()
         ;

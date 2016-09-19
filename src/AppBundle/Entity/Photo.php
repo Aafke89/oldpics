@@ -10,6 +10,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Photo
@@ -26,24 +27,37 @@ class Photo
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $title;
+    private $title = null;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
+     *
      */
-    private $description;
+    private $description = null;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\File(
+     *     maxSize = "1024k",
+     *     mimeTypes = {"image/jpeg", "image/png"},
+     *     mimeTypesMessage = "Please upload a valid image"
+     * )
+     *
      */
     private $file;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Folder", inversedBy="photos")
+     * @Assert\NotBlank()
      */
     private $folder;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
 
     /**
      * @return mixed
@@ -107,6 +121,22 @@ class Photo
     public function setFolder($folder)
     {
         $this->folder = $folder;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param mixed $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
     }
 
 

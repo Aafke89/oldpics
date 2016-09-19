@@ -27,19 +27,12 @@ class PhotoController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()){
             $photo = $form->getData();
-////            file
+
             $file = $photo->getFile();
-
             $fileName = $this->get('app.photo_uploader')->upload($file);
-//            $extension = $file->guessExtension();
-//            $fileName = md5(uniqid()).'.'.$extension;
-////            dump($fileName);die;
-//            $file->move(
-//                $this->getParameter('photo_directory'),
-//                $fileName
-//            );
-
             $photo->setFile($fileName);
+            $now = new\DateTime('now');
+            $photo->setCreatedAt($now);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($photo);

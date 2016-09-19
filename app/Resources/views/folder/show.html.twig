@@ -13,6 +13,7 @@
                <div class="col-md-2 col-xs-3">
                   <div class="preview-photo" >
                      <a href="{{ path('folder_photo_show', {'folderId': folder.id, 'photo': loop.index }) }}"><img src="{{ photo.file }}" alt="" height="150px" width="150px" ></a>
+                     {{ photo.title }}
                   </div>
                </div>
             {% endfor %}

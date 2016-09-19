@@ -19,6 +19,8 @@ class FolderRepository extends EntityRepository
     public function findAllRecentFolders()
     {
         return $this->createQueryBuilder('folder')
+            ->leftJoin('folder.photos', 'p')
+            ->orderBy('p.createdAt', 'DESC')
             ->getQuery()
             ->execute();
     }
