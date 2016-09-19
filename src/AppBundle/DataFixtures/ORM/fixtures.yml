@@ -1,0 +1,11 @@
+AppBundle\Entity\Folder:
+    folder_{1..5}:
+        title: <word()>
+        description: <sentence()>
+
+AppBundle\Entity\Photo:
+    photo_{1..100}:
+        title: <word()>
+        description: <sentence()>
+        file: <files()>
+        folder: '@folder_*'
