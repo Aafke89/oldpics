@@ -12,17 +12,24 @@
                         <th>Id</th>
                         <th>Username</th>
                         <th>Admin?</th>
+                        <th>edit</th>
                     </tr>
                     {% for user in users %}
                         <tr>
                             <td>{{ user.id }}</td>
                             <td>{{ user.username }}</td>
                             <td>
-                                {% if "ROLE_ADMIN" in user.roles|keys %}
-                                    yes!
-                                {% else %}
-                                    no!
-                                {% endif %}
+                                {% for role in user.roles %}
+                                    {% if role == "ROLE_SUPERADMIN" %}
+                                        superadmin
+                                    {% elseif role == "ROLE_ADMIN" %}
+                                        admin
+                                    {% elseif role == "ROLE_SUPEROPA" %}
+                                        superopa
+                                    {% endif %}
+                                {% endfor %}
+                            </td>
+                            <td>
                                 <a href="{{ path('superadmin', {'user': user.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil">edit</span></a>
                             </td>
                         </tr>

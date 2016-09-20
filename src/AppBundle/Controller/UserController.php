@@ -13,7 +13,7 @@ use AppBundle\Form\LoginForm;
 use AppBundle\Form\RegistrationForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\BrowserKit\Request;
 
 class UserController extends Controller
 {
@@ -68,9 +68,12 @@ class UserController extends Controller
                 );
         }
 
-        return $this->render('user/register.html.twig', [
+        return $this->render('/user/register.html.twig', [
             'form' => $form->createView()
         ]);
 
     }
+
+
+
 }
