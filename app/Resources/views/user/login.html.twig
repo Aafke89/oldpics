@@ -4,17 +4,18 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1>Login!</h1>
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
+                <div class="welcome">
+                    <p>Oeps! Je moet eerst inloggen om dit te kunnen doen.</p>
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
 
-                {{ form_start(form) }}
-                {{ form_row(form._username) }}
-                {{ form_row(form._password) }}
-                <button type="submit" class="btn btn-success">login</button>
-                {{ form_end(form) }}
-
+                    {{ form_start(form) }}
+                    {{ form_row(form._username, {'label': 'Vul hier je naam in:'})  }}
+                    {{ form_row(form._password, {'label': 'Vul hier je wachtwoord in'}) }}
+                    <button type="submit" class="btn btn-success">login</button>
+                    {{ form_end(form) }}
+                </div>
             </div>
         </div>
     </div>

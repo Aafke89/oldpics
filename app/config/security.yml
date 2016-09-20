@@ -34,3 +34,5 @@ security:
         - {path: ^/folder, roles: ROLE_SUPEROPA}
 
 
+
+

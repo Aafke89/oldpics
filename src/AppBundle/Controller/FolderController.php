@@ -18,6 +18,19 @@ use Symfony\Component\HttpFoundation\Request;
 class FolderController extends Controller
 {
     /**
+     * @Route("/folder/all", name="all_folders")
+     */
+    public function listAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $folders = $em->getRepository('AppBundle:Folder')
+            ->findAllRecentFolders();
+        return $this->render('folder/list.html.twig',[
+            'folders' => $folders,
+        ]);
+    }
+
+    /**
      * @Route("/folder/{folderId}", name="folder_show")
      */
     public function showAction(Folder $folderId)

@@ -15,11 +15,6 @@ class MainController extends Controller
 {
     public function homepageAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $folders = $em->getRepository('AppBundle:Folder')
-            ->findAllRecentFolders();
-        return $this->render('main/homepage.html.twig',[
-            'folders' => $folders,
-    ]);
+        return $this->render('main/homepage.html.twig');
     }
 }
