@@ -13,9 +13,6 @@
 </head>
 <body>
 <div class="main-content">
-    <div class="menu">
-        <a href="{{ path('homepage')}}" class="btn btn-primary">Alle foto's</a>
-    </div>
     {% for msg in app.session.flashBag.get('success') %}
         <div class="alert alert-success">{{ msg }}</div>
     {% endfor %}

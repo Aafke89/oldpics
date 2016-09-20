@@ -6,4 +6,3 @@ homepage:
     path: /
     defaults:
         _controller: AppBundle:Main:homepage
-

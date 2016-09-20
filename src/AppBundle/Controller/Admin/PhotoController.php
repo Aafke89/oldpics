@@ -9,6 +9,7 @@
 namespace AppBundle\Controller\Admin;
 
 
+use AppBundle\Form\FolderForm;
 use AppBundle\Form\PhotoForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PhotoController extends Controller
 {
     /**
-     * @Route("admin/new", name="add_photo")
+     * @Route("admin/new/photo", name="add_photo")
      */
     public function AddPhotoAction(Request $request)
     {
@@ -43,7 +44,32 @@ class PhotoController extends Controller
             return $this->redirectToRoute('add_photo');
         }
 
-        return $this->render('admin/new.html.twig', [
+        return $this->render('admin/newphoto.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("admin/new/folder", name="add_folder")
+     */
+    public function AddFolderAction(Request $request)
+    {
+        $form = $this->createForm(FolderForm::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $folder = $form->getData();
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($folder);
+            $em->flush();
+
+            $this->addFlash('success', 'Gelukt! Je kan nu foto\'s aan deze map toevoegen?');
+
+            return $this->redirectToRoute('add_photo');
+        }
+
+        return $this->render('admin/newfolder.html.twig', [
             'form' => $form->createView()
         ]);
     }

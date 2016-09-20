@@ -7,3 +7,13 @@ services:
     app.photo_uploader:
         class: AppBundle\Service\FileUploader
         arguments: ['%photo_directory%']
+
+    app.security.login_form_authenticator:
+        class: AppBundle\Security\LoginAuthenticator
+        autowire: true
+
+    app.doctrine.hash_password_listener:
+            class: AppBundle\Doctrine\HashPasswordListener
+            autowire: true
+            tags:
+                - { name: doctrine.event_subscriber }
