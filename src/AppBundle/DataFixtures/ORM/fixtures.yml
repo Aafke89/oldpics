@@ -9,3 +9,4 @@ AppBundle\Entity\Photo:
         description: <sentence()>
         file: <files()>
         folder: '@folder_*'
+        createdAt: <dateTimeBetween("-200 days", "now")>

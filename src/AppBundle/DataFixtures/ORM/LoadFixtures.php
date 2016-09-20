@@ -31,13 +31,12 @@ class LoadFixtures implements FixtureInterface
     public function files()
     {
         $files = [
+            '2ee9b10118f3ac60357897db02e5b185.jpeg',
+            '3e9a32f0eea50aa28ce520cecc308271.jpeg',
+            '7fc80c397d72ec85e5a512f29f87bb4f.jpeg',
+            '4981da5b0eb913b3a86036c75e930d8d.jpeg',
+            'c41afaa4fe3fe33a9794547c3ac3bed5.jpeg'
 
-            'http://photographyheat.com/wp-content/uploads/2013/01/Snake-Photography-.jpg',
-            'http://photographyheat.com/wp-content/uploads/2013/01/Snake-Photography-1.jpg',
-            'http://gq-images.condecdn.net/image/qG931qY850k/crop/1020',
-            'http://piqtura.com/wp-content/uploads/2015/08/1447691764Modern-Art.jpg',
-            'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Gustav_Klimt_016.jpg/266px-Gustav_Klimt_016.jpg',
-            'http://www.vanderkrogt.net/standbeelden/extra/gl/GL02ci-10086.jpg'
         ];
 
         $key = array_rand($files);
