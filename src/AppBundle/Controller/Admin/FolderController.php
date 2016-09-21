@@ -11,6 +11,8 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Folder;
 use AppBundle\Form\FolderForm;
+use AppBundle\Security\SecurityVoter;
+use AppBundle\Security\UserVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,6 +67,14 @@ class FolderController extends Controller
      */
     public function editFolderAction(Request $request, Folder $folder)
     {
+//        if (!$this->isGranted(SecurityVoter::EDIT, $folder)){
+//            dump($folder);die;
+//        } else {
+//            dump("WHAT THE FYCK");die;
+//        }
+
+        $this->denyAccessUnlessGranted(UserVoter::EDIT, $folder);
+
         $form = $this->createForm(FolderForm::class, $folder);
         $form->handleRequest($request);
 
@@ -94,6 +104,7 @@ class FolderController extends Controller
      */
     public function deleteFolderAction(Request $request, Folder $folder)
     {
+         $this->denyAccessUnlessGranted(UserVoter::DELETE, $folder);
 
             $em = $this->getDoctrine()->getManager();
 //        Delete all folders in this map

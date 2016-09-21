@@ -17,15 +17,18 @@
                         <tr>
                             <td>{{ folder.id }}</td>
                             <td>{{ folder.title }}</td>
-                            {#<td>{{ dump(folder.photos.count) }}</td>#}
-                            <td>{{ folder.photos.count }}</td>
+                            <td>{{ folder.photos.count }} foto's</td>
                             <td>
                                 <a href="{{ path('folder_photo_show', {'folderId': folder.id }) }}" class="btn btn-success">Bekijk</a>
                                 <a href="{{ path('add_photo') }}" class="btn btn-primary">Voeg foto toe</a>
-                                <a href="{{ path('edit_folder', { 'folder': folder.id }) }}" class="btn btn-warning">Bewerk</a>
-                                <a href="{{ path('delete_folder', { 'folder': folder.id}) }}"
-                                   onclick="return confirm('Weet je het zeker? Alle foto\'s in dit mapje zullen ook verwijderd worden!)"
-                                   class="btn btn-danger">Verwijder</a>
+                                {%  if is_granted('edit', folder) %}
+                                    <a href="{{ path('edit_folder', { 'folder': folder.id }) }}" class="btn btn-warning">Bewerk</a>
+                                {% endif %}
+                                {% if is_granted('delete', folder) %}
+                                    <a href="{{ path('delete_folder', { 'folder': folder.id}) }}"
+                                       onclick="return confirm('Weet je het zeker? Alle foto\'s in dit mapje zullen ook verwijderd worden!)"
+                                       class="btn btn-danger">Verwijder</a>
+                                {% endif %}
                             </td>
                         </tr>
 
