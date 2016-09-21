@@ -45,6 +45,11 @@ class Folder
      */
     private $photos;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="folder")
+     */
+    private $user;
+
     public function __construct()
     {
         {
@@ -111,6 +116,22 @@ class Folder
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 

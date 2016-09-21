@@ -60,6 +60,11 @@ class Photo
     private $createdAt;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="photo")
+     */
+    private $user;
+
+    /**
      * @return mixed
      */
     public function getTitle()
@@ -137,6 +142,22 @@ class Photo
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
     }
 
 

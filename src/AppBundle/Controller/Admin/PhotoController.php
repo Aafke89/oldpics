@@ -29,11 +29,20 @@ class PhotoController extends Controller
         if ($form->isSubmitted() && $form->isValid()){
             $photo = $form->getData();
 
+//            Add the file to web/uploads
             $file = $photo->getFile();
             $fileName = $this->get('app.photo_uploader')->upload($file);
             $photo->setFile($fileName);
+
+//            Add the time that the photo is added
             $now = new\DateTime('now');
             $photo->setCreatedAt($now);
+
+//            Add the user that uploaded this photo
+            $user = $this->getUser();
+            $photo->setUser($user);
+
+//            dump($photo);die;
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($photo);
@@ -45,31 +54,6 @@ class PhotoController extends Controller
         }
 
         return $this->render('admin/newphoto.html.twig', [
-            'form' => $form->createView()
-        ]);
-    }
-
-    /**
-     * @Route("admin/new/folder", name="add_folder")
-     */
-    public function AddFolderAction(Request $request)
-    {
-        $form = $this->createForm(FolderForm::class);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-            $folder = $form->getData();
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($folder);
-            $em->flush();
-
-            $this->addFlash('success', 'Gelukt! Je kan nu foto\'s aan deze map toevoegen?');
-
-            return $this->redirectToRoute('add_photo');
-        }
-
-        return $this->render('admin/newfolder.html.twig', [
             'form' => $form->createView()
         ]);
     }
