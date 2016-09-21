@@ -10,9 +10,15 @@
                    <div class="col-xs-3">
                        <div class="folder-preview">
                            <b>{{ folder.title }}</b><br>
-                           <div class="folder-preview-image">
-                               <a href="{{ path('folder_show', {'folderId': folder.id }) }}"><img src="/uploads/photos/{{ folder.photos|first.file }}" alt="" width="150px"height="150px"></a>
-                           </div>
+                           {% if folder.photos is not empty %}
+                               <div class="folder-preview-image">
+                                   <a href="{{ path('folder_show', {'folderId': folder.id }) }}"><img src="/uploads/photos/{{ folder.photos|first.file }}" alt="" width="150px"height="150px"></a>
+                               </div>
+                           {% else %}
+                               <div class="folder-preview-image">
+                                   <br><br><br><br> Er staan nog geen foto's in dit mapje! <br><br><br><br>
+                               </div>
+                           {% endif %}
                            <div class="folder-preview-title">
                                {{ folder.description }}
                            </div>

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% use "form_div_layout.html.twig" %}
+{% block body %}
+    <div class="welcome">
+        <div class="text-center">
+            <h1>Verander hier de informatie over je foto</h1>
+        </div>
+        <img src="/uploads/photos/{{ photo.file }}" alt="" width="150px">
+        {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.folder) }}
+        <button type="submit" class="btn btn-primary" formnovalidate>Verander</button>
+        {{ form_end(form, {'render_rest': false }) }}
+    </div>
+{% endblock %}

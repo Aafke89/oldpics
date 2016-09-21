@@ -9,6 +9,7 @@
 namespace AppBundle\Controller\Admin;
 
 
+use AppBundle\Entity\Photo;
 use AppBundle\Form\FolderForm;
 use AppBundle\Form\PhotoForm;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -18,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 class PhotoController extends Controller
 {
     /**
-     * @Route("admin/new/photo", name="add_photo")
+     * @Route("admin/photo/new", name="add_photo")
      */
     public function AddPhotoAction(Request $request)
     {
@@ -54,7 +55,56 @@ class PhotoController extends Controller
         }
 
         return $this->render('admin/newphoto.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("admin/photo/{photo}/edit", name="edit_photo")
+     */
+    public function EditPhotoAction(Request $request, Photo $photo)
+    {
+//        $photo = new Photo();
+        $form = $this->createForm(PhotoForm::class, $photo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $photo = $form->getData();
+
+//            Add the time that the photo is updated
+            $now = new\DateTime('now');
+            $photo->setCreatedAt($now);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($photo);
+            $em->flush();
+
+            $this->addFlash('success', 'Gelukt! Deze foto is nu bewerkt');
+
+            return $this->redirectToRoute('admin_all_folders');
+        }
+
+        return $this->render('admin/editPhoto.html.twig', [
+            'form' => $form->createView(),
+            'photo' => $photo
+
+        ]);
+    }
+
+
+
+    /**
+     * @Route("admin/photo/{photo}/delete", name="delete_photo")
+     */
+    public function deletePhotoAction(Request $request, Photo $photo)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($photo);
+        $em->flush();
+
+        $this->addFlash('success', 'Gelukt je hebt deze foto verwijderd');
+
+        return $this->redirectToRoute('all_folders');
     }
 }

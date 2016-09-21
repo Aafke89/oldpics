@@ -42,6 +42,7 @@ class Folder
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Photo", mappedBy="folder")
+     *
      */
     private $photos;
 

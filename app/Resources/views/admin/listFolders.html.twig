@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xs-12">
+                <h1>Folders</h1>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Id</th>
+                        <th>Folder</th>
+                        <th>Photo's</th>
+                        <th>See/Edit/Delete</th>
+                    </tr>
+                    {% for folder in folders %}
+                        <tr>
+                            <td>{{ folder.id }}</td>
+                            <td>{{ folder.title }}</td>
+                            {#<td>{{ dump(folder.photos.count) }}</td>#}
+                            <td>{{ folder.photos.count }}</td>
+                            <td>
+                                <a href="{{ path('folder_photo_show', {'folderId': folder.id }) }}" class="btn btn-success">Bekijk</a>
+                                <a href="{{ path('add_photo') }}" class="btn btn-primary">Voeg foto toe</a>
+                                <a href="{{ path('edit_folder', { 'folder': folder.id }) }}" class="btn btn-warning">Bewerk</a>
+                                <a href="{{ path('delete_folder', { 'folder': folder.id}) }}"
+                                   onclick="return confirm('Weet je het zeker? Alle foto\'s in dit mapje zullen ook verwijderd worden!)"
+                                   class="btn btn-danger">Verwijder</a>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

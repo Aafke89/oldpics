@@ -17,7 +17,9 @@ class PhotoForm extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('description', TextType::class)
-            ->add('file', FileType::class)
+            ->add('file', FileType::class, [
+                'data_class' => null
+            ])
             ->add('folder', EntityType::class, [
                     'class' => Folder::class
             ])

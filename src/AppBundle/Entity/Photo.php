@@ -61,6 +61,7 @@ class Photo
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="photo")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $user;
 
