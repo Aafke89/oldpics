@@ -12,9 +12,10 @@
 
                     {{ form_start(form) }}
                     {{ form_row(form._username, {'label': 'Vul hier je naam in:'})  }}
-                    {{ form_row(form._password, {'label': 'Vul hier je wachtwoord in'}) }}
+                    {{ form_row(form._password, {'label': 'Vul hier je wachtwoord in'}) }} <br>
                     <button type="submit" class="btn btn-success">login</button>
-                    {{ form_end(form) }}
+                    {{ form_end(form) }} <br>
+                    <a href="{{ path('user_register') }}">Ik ben nieuw!</a>
                 </div>
             </div>
         </div>

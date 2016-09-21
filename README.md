@@ -30,13 +30,15 @@ Een Supersimpele inteface om foto's te delen.
 ***____________________________________________________***
 
 
-**Eventueel nog toe te voegen**
-* IP-authentication voor SUPEROPA
-* ADMIN kan foto's editen en deleten
-* ADMIN kan meerdere foto's in een keer toevoegen
+**(Eventueel) nog toe te voegen**
+* IP-authentication voor SUPEROPA of op andere manier versimpelen?
+* ADMIN kan foto's editen en deleten (en hele folder in een keer)
+* ADMIN kan meerdere foto's in een keer toevoegen en/of dit op een andere manier makkelijk maken (folder al invullen of PhotoForm integreren in FolderForm?)
 * Mooi maken CSS en betere Twig met templates en shared menu's
+* Structuur verbeteren/AdminBundles toevoegen
 * ........
-gt
+
+
 ***____________________________________________________***
 
 **Gebruikt**

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% use "form_div_layout.html.twig" %}
 {% block body %}
+    <div class="welcome">
     <div class="text-center">
         <h1>Add your Folder here</h1>
     </div>
@@ -9,4 +10,5 @@
     {{ form_row(form.description) }}
     <button type="submit" class="btn btn-primary" formnovalidate>Add</button>
     {{ form_end(form) }}
+    </div>
 {% endblock %}

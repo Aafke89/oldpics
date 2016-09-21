@@ -1,8 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="menu-folder text-right">
-        <a href="{{ path('folder_show', {'folderId': folder.id }) }}" class="btn btn-primary">Terug naar alle foto's uit deze map</a>
-    </div>
+
     <div class="text-center">
     <h1>{{ folder.title }}</h1>
     <h3>{{ folder.description }}</h3>
@@ -20,6 +18,9 @@
         </div>
         <div class="navigation text-center">
         {{ knp_pagination_render(photos) }}
+        </div>
+        <div class="menu-folder">
+            <a href="{{ path('folder_show', {'folderId': folder.id }) }}" class="btn btn-warning">Terug naar alle foto's uit deze map</a>
         </div>
     </div>
 

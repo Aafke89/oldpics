@@ -2,19 +2,6 @@
 
 
 {% block body  %}
-    <div class="admin-menu">
-        <div class="admin-menu-item"><a href="{{ path('add_photo') }}">Voeg een foto toe</a></div>
-        <div class="admin-menu-item"><a href="{{ path('add_folder') }}">Voeg een mapje toe</a></div>
-        <div class="admin-menu-item"> <a href="{{ path('all_folders') }}">Bekijk alle mappen</a></div>
-        <div class="admin-menu-item">Jij bent: {{ app.user.username  }}</div>
-        {% if app.user  %}
-            <div class="admin-menu-item"> <a href="{{ path('logout') }}">logout</a></div>
-            {% else %}
-            <div class="admin-menu-item"> <a href="{{ path('user_login') }}">login</a></div>
-        {% endif %}
-
-
-    </div>
     <div class="text-center">
         <h1>Hoi {{ app.user.username }}</h1>
         <p>Dit is een platform om supersimpel foto's te kunnen delen!</p>

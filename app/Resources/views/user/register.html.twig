@@ -4,17 +4,22 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
-                <h1>Register!</h1>
+                <div class="welcome">
+                <h1>Meld jezelf aan!</h1><br>
                 {{ form_start(form) }}
-                {{ form_row(form.username) }}
+                {{ form_row(form.username, {
+                    'label': 'Vul hier je naam in'
+                }) }}
                 {{ form_row(form.plainPassword.first, {
-                    'label': 'Password'
+                    'label': 'Wachtwoord'
                 }) }}
                 {{ form_row(form.plainPassword.second, {
-                    'label': 'Repeat Password'
-                })  }}
-                <button type="submit" class="btn btn-success">login</button>
+                    'label': 'Herhaal je wachtwoord'
+                })  }} <br>
+                <button type="submit" class="btn btn-success">Registreer mij!</button>
                 {{ form_end(form) }}
+                    <br><br> <a href="{{ path('user_login') }}">Ik ben al een gebruiker!</a>
+                </div>
             </div>
         </div>
     </div>
