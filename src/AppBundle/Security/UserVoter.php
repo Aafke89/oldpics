@@ -25,8 +25,8 @@ class UserVoter extends Voter
 
     public function __construct(AccessDecisionManagerInterface $decisionManager)
     {
+//        include decisionmanager to get access to the ROLES
         $this->decisionManager = $decisionManager;
-
     }
 
     protected function supports($attribute, $subject)
@@ -44,6 +44,7 @@ class UserVoter extends Voter
             return false;
         }
 
+//        A superadmin can always delete or edit folders and photo's
         if ($this->decisionManager->decide($token, ['ROLE_SUPERADMIN'])){
             return true;
         }
@@ -61,35 +62,3 @@ class UserVoter extends Voter
         return false;
     }
 }
-
-
-
-
-
-
-
-
-//        switch ($attribute) {
-//            case self::EDIT:
-//                return $this->canEdit($attribute, $subject, $user);
-//            case self::DELETE:
-//                return $this->canDelete($attribute, $subject, $user);
-//        }
-
-
-//    public function canEdit($attrbiute, $subject, $user)
-//    {
-//        dump($attribute);die;
-////        if ($attribute === self::EDIT && $user->getId() === $subject->getUser()->getId()) {
-////            return true;
-////        }
-//
-////        return false;
-//    }
-//
-//    public function canDelete($subject, $user)
-//    {
-//        return $user === $subject->getUser;
-//    }
-//
-//}

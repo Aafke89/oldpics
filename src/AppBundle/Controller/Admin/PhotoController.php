@@ -65,10 +65,8 @@ class PhotoController extends Controller
      */
     public function EditPhotoAction(Request $request, Photo $photo)
     {
-
 //      use the UserVoter to check if this is the creator of the foto
         $this->denyAccessUnlessGranted(UserVoter::EDIT, $photo);
-
 //
         $form = $this->createForm(PhotoForm::class, $photo);
         $form->handleRequest($request);

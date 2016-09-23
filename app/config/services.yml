@@ -18,8 +18,7 @@ services:
             tags:
                 - { name: doctrine.event_subscriber }
 
-
-    app.post_voter:
+    app.security.user_voter:
         class: AppBundle\Security\UserVoter
         arguments: ['@security.access.decision_manager']
         tags:
