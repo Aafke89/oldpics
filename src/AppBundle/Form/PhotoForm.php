@@ -30,7 +30,8 @@ class PhotoForm extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'AppBundle\Entity\Photo'
+            'data_class' => 'AppBundle\Entity\Photo',
+            'csrf_protection' => false,
         ]);
     }
 

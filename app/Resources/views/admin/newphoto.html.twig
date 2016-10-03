@@ -3,14 +3,22 @@
 {% block body %}
    <div class="welcome">
    <div class="text-center">
-   <h1>Add your photo's here</h1>
+   <h1>Voeg hier een foto toe</h1>
    </div>
    {{ form_start(form) }}
-   {{ form_row(form.title) }}
-   {{ form_row(form.description) }}
-   {{ form_row(form.file) }}
-   {{ form_row(form.folder) }}
-   <button type="submit" class="btn btn-primary" formnovalidate>Add</button>
+   {{ form_row(form.title, {
+      'label': 'Titel'
+   }) }}
+   {{ form_row(form.description, {
+      'label': 'Beschrijving'
+   }) }}
+   {{ form_row(form.file, {
+      'label': 'Selecteer een bestand'
+   }) }}
+   {{ form_row(form.folder, {
+      'label': 'Kies een mapje'
+   }) }}
+   <button type="submit" class="btn btn-primary" formnovalidate>Voeg toe/button>
    {{ form_end(form) }}
    </div>
 {% endblock %}

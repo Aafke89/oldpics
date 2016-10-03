@@ -6,9 +6,11 @@
       <div class="container">
          <div class="row">
             {% for photo in photos %}
-               <div class="col-md-2 col-xs-3">
+               <div class="col-xs-4 col-sm-3 col-md-2">
                   <div class="preview-photo" >
-                     <a href="{{ path('folder_photo_show', {'folderId': folder.id, 'photo': loop.index }) }}"><img src="/uploads/photos/{{ photo.file }}" alt="" height="150px" width="150px" ></a>
+                     <a href="{{ path('folder_photo_show', {'folderId': folder.id, 'photo': loop.index }) }}">
+                        <img src="/uploads/photos/{{ photo.file }}" alt="" height="150px" width="150px" >
+                     </a> <br>
                      {{ photo.title }}
                   </div>
                </div>

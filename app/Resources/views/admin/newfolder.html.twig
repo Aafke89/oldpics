@@ -3,12 +3,16 @@
 {% block body %}
     <div class="welcome">
     <div class="text-center">
-        <h1>Add your Folder here</h1>
+        <h1>Voeg een mapje toe</h1>
     </div>
     {{ form_start(form) }}
-    {{ form_row(form.title) }}
-    {{ form_row(form.description) }}
-    <button type="submit" class="btn btn-primary" formnovalidate>Add</button>
+    {{ form_row(form.title, {
+        'label': 'titel'
+    }) }}
+    {{ form_row(form.description, {
+        'label': 'beschrijving'
+    }) }}
+    <button type="submit" class="btn btn-primary" formnovalidate>Voeg toe</button>
     {{ form_end(form) }}
     </div>
 {% endblock %}

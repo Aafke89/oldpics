@@ -7,21 +7,45 @@
     <div class="container">
         <div class="row">
             {% for photo in photos %}
-                <div class="col-xs-10">
-                    <div class="photo" >
-                        <img src="/uploads/photos/{{ photo.file }}" alt="" >
+                <div class="col-xs-10 col-xs-offset-1">
+                    <div class="photo-frame">
+                        <div class="photo" >
+                            <img src="/uploads/photos/{{ photo.file }}" alt="" >
+                        </div>
+                        <div class="photo-description">
+                            <b>{{ photo.title }}</b>
+                            <p>{{ photo.description }}</p>
+                        </div>
                     </div>
-                    <b>{{ photo.title }}</b>
-                    <p>{{ photo.description }}</p>
                 </div>
             {% endfor %}
         </div>
+
+        {# Pagination #}
         <div class="navigation text-center">
         {{ knp_pagination_render(photos) }}
         </div>
-        <div class="menu-folder">
-            <a href="{{ path('folder_show', {'folderId': folder.id }) }}" class="btn btn-warning">Terug naar alle foto's uit deze map</a>
+
+        {# Show edit and delete button if user is granted #}
+        <div class="col-xs-4 col-xs-offset-4">
+            {% for photo in photos %}
+                {%  if is_granted('edit', photo) %}
+                    <a href="{{ path('edit_photo', { 'photo': photo.id }) }}" class="btn btn-warning">Bewerk </a>
+                {% endif %}
+                {% if is_granted('delete', photo) %}
+                    <a href="{{ path('delete_photo', { 'photo': photo.id}) }}"
+                       onclick="return confirm('Weet je het zeker? deze foto zal verwijderd worden!)"
+                       class="btn btn-danger">Verwijder</a>
+                {% endif %}
+            {% endfor %}
         </div>
+
+        {# Show button to go back to all pictures #}
+        <div class="menu-folder">
+            <a href="{{ path('folder_show', {'folderId': folder.id }) }}" class="btn btn-success">Terug naar alle foto's uit deze map</a>
+        </div>
+
+
     </div>
 
 {% endblock %}

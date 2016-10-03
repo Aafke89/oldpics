@@ -69,7 +69,10 @@ class PhotoController extends Controller
     {
 //      use the UserVoter to check if this is the creator of the foto
         $this->denyAccessUnlessGranted(UserVoter::EDIT, $photo);
-//
+
+//        Keep the file!
+        $file = $photo->getFile();
+
         $form = $this->createForm(PhotoForm::class, $photo);
         $form->handleRequest($request);
 
@@ -79,14 +82,17 @@ class PhotoController extends Controller
 //            Add the time that the photo is updated
             $now = new\DateTime('now');
             $photo->setCreatedAt($now);
+            $photo->setFile($file);
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($photo);
+//            $em->persist($photo);
             $em->flush();
 
             $this->addFlash('success', 'Gelukt! Deze foto is nu bewerkt');
 
-            return $this->redirectToRoute('admin_all_folders');
+            return $this->redirectToRoute('folder_show', [
+                'folderId' => $photo->getFolder()->getId()
+            ]);
         }
 
         return $this->render('admin/editPhoto.html.twig', [
@@ -114,7 +120,7 @@ class PhotoController extends Controller
     }
 
     /**
-     * @Route("admin/photos/new", name="add_photo")
+     * @Route("admin/multiphotos/new", name="add_multiple_photos")
      */
     public function AddMultiplePhotosAction(Request $request)
     {

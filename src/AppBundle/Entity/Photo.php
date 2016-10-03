@@ -161,6 +161,14 @@ class Photo
         $this->user = $user;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
 
 

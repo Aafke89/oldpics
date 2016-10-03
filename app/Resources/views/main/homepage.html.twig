@@ -5,7 +5,8 @@
                 <h1>Hoi</h1>
                 <p>Je bent ingelogd als admin. Ga naar het admingedeelte om foto's te zien! Ben je geen admin? Log dan uit!</p> <br><br>
                 <a href="{{ path('admin_home') }}" class="btn btn-warning">Ga naar het Admin-gedeelte</a> <br><br>
-                <a href="{{ path('logout') }}" class="btn btn-danger">Log uit</a>
+              <a href="{{ path('all_folders') }}" class="btn btn-warning">Ga naar de foto's</a> <br><br>
+              <a href="{{ path('logout') }}" class="btn btn-danger">Log uit</a>
           {% else %}
           <h1>Hoi Opa en Oma</h1> <br>
           <p>
