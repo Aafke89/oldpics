@@ -47,7 +47,7 @@ class Folder
     private $photos;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="folder")
+     * @ORM\ManyToOne(targetEntity="User")
      */
     private $user;
 

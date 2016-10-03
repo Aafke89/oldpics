@@ -11,6 +11,7 @@ namespace AppBundle\Controller\Admin;
 
 use AppBundle\Entity\Photo;
 use AppBundle\Form\FolderForm;
+use AppBundle\Form\MultiplePhotosForm;
 use AppBundle\Form\PhotoForm;
 use AppBundle\Security\UserVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -35,6 +36,7 @@ class PhotoController extends Controller
             $file = $photo->getFile();
             $fileName = $this->get('app.photo_uploader')->upload($file);
             $photo->setFile($fileName);
+
 
 //            Add the time that the photo is added
             $now = new\DateTime('now');
@@ -94,8 +96,6 @@ class PhotoController extends Controller
         ]);
     }
 
-
-
     /**
      * @Route("admin/photo/{photo}/delete", name="delete_photo")
      */
@@ -112,4 +112,43 @@ class PhotoController extends Controller
 
         return $this->redirectToRoute('all_folders');
     }
+
+    /**
+     * @Route("admin/photos/new", name="add_photo")
+     */
+    public function AddMultiplePhotosAction(Request $request)
+    {
+        $form = $this->createForm(MultiplePhotosForm::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $data = $form->getData();
+            $files = $data['files'];
+            $folder = $data['folder'];
+            $now = new\DateTime('now');
+            $user = $this->getUser();
+
+            foreach ($files as $file) {
+                $photo = new Photo();
+                $fileName = $this->get('app.photo_uploader')->upload($file);
+                $photo->setFile($fileName);
+                $photo->setFolder($folder);
+                $photo->setCreatedAt($now);
+                $photo->setUser($user);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($photo);
+                $em->flush();
+            }
+
+            $this->addFlash('success', 'Gelukt! Deze foto\'s zijn nu zichtbaar voor opa en oma! Nog eentje?');
+
+            return $this->redirectToRoute('admin_home');
+        }
+
+        return $this->render('admin/multiplephotos.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
 }

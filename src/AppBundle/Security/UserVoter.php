@@ -29,6 +29,12 @@ class UserVoter extends Voter
         $this->decisionManager = $decisionManager;
     }
 
+    /**
+     * Calls this voter with the is_granted function only if the attr is delete or edit and a photo or folder is passed.
+     * @param string $attribute
+     * @param mixed $subject
+     * @return bool
+     */
     protected function supports($attribute, $subject)
     {
         return ($subject instanceof Folder || $subject instanceof Photo ) && in_array($attribute, array(
