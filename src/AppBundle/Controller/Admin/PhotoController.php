@@ -8,7 +8,6 @@
 
 namespace AppBundle\Controller\Admin;
 
-
 use AppBundle\Entity\Photo;
 use AppBundle\Form\FolderForm;
 use AppBundle\Form\MultiplePhotosForm;
@@ -25,41 +24,44 @@ class PhotoController extends Controller
      */
     public function AddPhotoAction(Request $request)
     {
-//        $photo = new Photo();
+        //        $photo = new Photo();
         $form = $this->createForm(PhotoForm::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $photo = $form->getData();
 
-//            Add the file to web/uploads
+            // Add the file to web/uploads
             $file = $photo->getFile();
             $fileName = $this->get('app.photo_uploader')->upload($file);
             $photo->setFile($fileName);
 
 
-//            Add the time that the photo is added
+            // Add the time that the photo is added
             $now = new\DateTime('now');
             $photo->setCreatedAt($now);
 
-//            Add the user that uploaded this photo
+            // Add the user that uploaded this photo
             $user = $this->getUser();
             $photo->setUser($user);
 
-//            dump($photo);die;
+            // dump($photo);die;
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($photo);
             $em->flush();
 
-            $this->addFlash('success', 'Gelukt! Deze foto is nu zichtbaar voor opa en oma! Nog eentje?');
-
+            $this->addFlash(
+                'success',
+                'Gelukt! Deze foto is nu zichtbaar voor opa en oma! Nog eentje?'
+            );
             return $this->redirectToRoute('add_photo');
         }
-
-        return $this->render('admin/newphoto.html.twig', [
+        return $this->render(
+            'admin/newphoto.html.twig', [
             'form' => $form->createView(),
-        ]);
+            ]
+        );
     }
 
     /**
@@ -67,39 +69,42 @@ class PhotoController extends Controller
      */
     public function EditPhotoAction(Request $request, Photo $photo)
     {
-//      use the UserVoter to check if this is the creator of the foto
+        //      use the UserVoter to check if this is the creator of the foto
         $this->denyAccessUnlessGranted(UserVoter::EDIT, $photo);
 
-//        Keep the file!
+        // Keep the file!
         $file = $photo->getFile();
 
         $form = $this->createForm(PhotoForm::class, $photo);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $photo = $form->getData();
 
-//            Add the time that the photo is updated
+            // Add the time that the photo is updated
             $now = new\DateTime('now');
             $photo->setCreatedAt($now);
             $photo->setFile($file);
 
             $em = $this->getDoctrine()->getManager();
-//            $em->persist($photo);
+            // $em->persist($photo);
             $em->flush();
 
             $this->addFlash('success', 'Gelukt! Deze foto is nu bewerkt');
 
-            return $this->redirectToRoute('folder_show', [
+            return $this->redirectToRoute(
+                'folder_show', [
                 'folderId' => $photo->getFolder()->getId()
-            ]);
+                ]
+            );
         }
 
-        return $this->render('admin/editPhoto.html.twig', [
+        return $this->render(
+            'admin/editPhoto.html.twig', [
             'form' => $form->createView(),
             'photo' => $photo
-
-        ]);
+            ]
+        );
     }
 
     /**
@@ -127,7 +132,7 @@ class PhotoController extends Controller
         $form = $this->createForm(MultiplePhotosForm::class);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             $files = $data['files'];
             $folder = $data['folder'];
@@ -147,14 +152,16 @@ class PhotoController extends Controller
                 $em->flush();
             }
 
-            $this->addFlash('success', 'Gelukt! Deze foto\'s zijn nu zichtbaar voor opa en oma! Nog eentje?');
+            $this->addFlash(
+                'success',
+                'Gelukt! Deze foto\'s zijn nu zichtbaar voor opa en oma! Nog eentje?'
+            );
 
             return $this->redirectToRoute('admin_home');
         }
-
-        return $this->render('admin/multiplephotos.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        return $this->render(
+            'admin/multiplephotos.html.twig',
+            ['form' => $form->createView(), ]
+        );
     }
-
 }

@@ -8,12 +8,10 @@
 
 namespace AppBundle\Controller;
 
-
 use AppBundle\Entity\Folder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class FolderController extends Controller
 {
@@ -25,7 +23,7 @@ class FolderController extends Controller
         $em = $this->getDoctrine()->getManager();
         $folders = $em->getRepository('AppBundle:Folder')
             ->findAllRecentFolders();
-        return $this->render('folder/list.html.twig',[
+        return $this->render('folder/list.html.twig', [
             'folders' => $folders,
         ]);
     }
@@ -35,7 +33,6 @@ class FolderController extends Controller
      */
     public function showAction(Folder $folderId)
     {
-
         $em = $this->getDoctrine()->getManager();
         $photos = $em->getRepository('AppBundle:Photo')
             ->findAllPhotosFromFolder($folderId);
@@ -71,11 +68,9 @@ class FolderController extends Controller
             $request->query->getInt('limit', 1)
         );
 
-
         return $this->render("photo/show.html.twig", [
             'photos' => $pagination,
             'folder' => $folderId
         ]);
     }
 }
-
