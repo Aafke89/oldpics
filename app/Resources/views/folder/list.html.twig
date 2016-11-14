@@ -1,30 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-   <div class="folder-foto">
-       <div class="folder-tekstje">
-           <p>Hoi, hier zijn alle mapjes met foto's die we hebben toegevoegd. Klik op een mapje om alle foto's in dat mapje te kunnen zien!</p>
-       </div>
-       <div class="container">
-           <div class="row">
-               {% for folder in folders  %}
-                   <div class="col-xs-12 col-sm-4 ">
-                       <div class="folder-preview">
-                           <b>{{ folder.title }}</b><br>
-                           {% if folder.photos is not empty %}
-                               <div class="folder-preview-image">
-                                   <a href="{{ path('folder_show', {'folderId': folder.id }) }}"><img src="/uploads/photos/{{ folder.photos|first.file }}" alt="" width="150px"height="150px"></a>
-                               </div>
-                           {% else %}
-                               <div class="folder-preview-image">
-                                   <br><br><br><br> Er staan nog geen foto's in dit mapje! <br><br><br><br>
-                               </div>
-                           {% endif %}
-                           <div class="folder-preview-title">
-                               {{ folder.description }}
-                           </div>
-                       </div>
-                   </div>
-               {% endfor %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="content-block">
+                    <p>Hoi, hier zijn alle mapjes met foto's die we hebben toegevoegd. Klik op een mapje om alle foto's in dat mapje te kunnen zien!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="content-block">
+                    <div class="row">
+                {% for folder in folders  %}
+                        <div class="col-xs-4 col-sm-3">
+                            <div class="preview-folder">
+                                <b>{{ folder.title }}</b> <br><br>
+                                {% if folder.photos is not empty %}
+                                        <a href="{{ path('folder_show', {'folderId': folder.id }) }}">
+                                            <img src="/uploads/photos/{{ folder.photos|first.file }}" width="150px">
+                                        </a>
+                                {% else %}
+                                        Er staan nog geen foto's in dit mapje!
+                                {% endif %} <br><br>
+                                    {{ folder.description }}
+                            </div>
+                        </div>
+                {% endfor %}
+                    </div>
+                </div>
            </div>
        </div>
    </div>

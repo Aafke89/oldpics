@@ -1,0 +1,97 @@
+body {
+    background-color: #f4f1f0;
+}
+
+.content-block {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 40px;
+    text-align: center;
+    background-color: white;
+}
+
+.content-block-pink {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fa969f;
+}
+
+.photo-block {
+    display: flex;
+    justify-content: space-around;
+}
+
+.preview-folder {
+    height: 280px;
+    margin: 10px;
+    padding: 10px;
+    box-shadow:  -4px -4px 16px -7px rgba(250, 150, 159, 0.2);
+}
+
+.preview-photo {
+    margin-bottom: 10px;
+    height: 180px;
+}
+
+.btn-primary {
+     background-color: #47d3d7;;
+     border: #47d3d7;;
+    color: black;
+    margin: 10px;
+ }
+.btn-primary:hover  {
+    background-color: #62d9dd;
+    border: #62d9dd;
+    color: black;
+}
+
+.btn-danger {
+    background-color: #fa969f;
+    border: #fa969f;
+    color: black;
+}
+.btn-danger:hover  {
+    background-color: #ffb8be;
+    border: #ffb8be;
+    color: black;
+}
+
+
+.form {
+    width: 60%;
+    margin: auto;
+}
+
+.not-centered {
+    text-align: left;
+}
+
+.custom-navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+    margin-top: 20px;
+}
+
+.custom-navbar li {
+    float: left;
+}
+
+.custom-navbar li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.custom-navbar li a:hover {
+    background-color: #fa969f;
+}

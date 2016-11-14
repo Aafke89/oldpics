@@ -2,12 +2,16 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <h1>Edit this User {{ user.username }}</h1>
-                {{ form_start(form) }}
-                {{ form_row(form.roles) }}
-                <button type="submit" class="btn btn-primary" formnovalidate>Save</button>
-                {{ form_end(form) }}
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="content-block">
+                    <div class="form not-centered">
+                        <h2>Edit this User "{{ user.username }}"</h2>
+                        {{ form_start(form) }}
+                        {{ form_row(form.roles) }}
+                        <button type="submit" class="btn btn-primary" formnovalidate>Save</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -1,30 +1,44 @@
-<div class="admin-menu">
-    <div class="admin-menu-item"><a href="{{ path('add_photo') }}" title="Voeg een foto toe">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <i class="fa fa-file-image-o" aria-hidden="true"></i>
-        </a></div>
-    <div class="admin-menu-item"><a href="{{ path('add_multiple_photos') }}" title="Voeg meerdere foto's toe">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <i class="fa fa-file-image-o" aria-hidden="true"></i>
-            <i class="fa fa-file-image-o" aria-hidden="true"></i>
-        </a></div>
-    <div class="admin-menu-item"><a href="{{ path('add_folder') }}" title="Voeg een mapje toe">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <i class="fa fa-folder-o" aria-hidden="true"></i>
-        </a></div>
-    <div class="admin-menu-item"> <a href="{{ path('admin_all_folders') }}" title="Bekijk alle mappen">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-            <i class="fa fa-folder-o" aria-hidden="true"></i>
-            <i class="fa fa-folder-o" aria-hidden="true"></i>
-        </a></div>
-    <div class="admin-menu-item"> <a href="{{ path('all_folders') }}" title="Neem een kijkje">
-            <i class="fa fa-eye" aria-hidden="true"></i>
-        </a></div>
-    <div class="admin-menu-item admin-menu-item-static text-center">{{ app.user.username  }}
-    {% if app.user  %}
-        <a href="{{ path('logout') }}" title="Log uit"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-    {% else %}
-        <a href="{{ path('user_login') }}" title="Log in" ><i class="fa fa-sign-in" aria-hidden="true"></i></a>
-    {% endif %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <ul class="custom-navbar">
+                    <li><a class="admin-menu-item" href="{{ path('add_photo') }}" title="Voeg een foto toe">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li> <a class="admin-menu-item" href="{{ path('add_multiple_photos') }}" title="Voeg meerdere foto's toe">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li><a class="admin-menu-item" href="{{ path('add_folder') }}" title="Voeg een mapje toe">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            <i class="fa fa-folder-o" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li><a class="admin-menu-item" href="{{ path('admin_all_folders') }}" title="Bekijk alle mappen">
+                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <i class="fa fa-folder-o" aria-hidden="true"></i>
+                            <i class="fa fa-folder-o" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="admin-menu-item" href="{{ path('all_folders') }}" title="Neem een kijkje">
+                            <i class="fa fa-eye" aria-hidden="true">
+
+                            </i>
+                        </a>
+                    </li>
+                    <li style="float:right">
+                        {% if app.user  %}
+                            <a href="{{ path('logout') }}" title="Log uit"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                        {% else %}
+                            <a href="{{ path('user_login') }}" title="Log in" ><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                        {% endif %}
+                    </li>
+                </ul>
+        </div>
     </div>
 </div>

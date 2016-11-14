@@ -3,39 +3,37 @@
 {% block body %}
     <div class="container">
         <div class="row">
-
-            <div class="col-xs-12">
-                <h1>Users</h1>
-
-                <table class="table table-striped">
-                    <tr>
-                        <th>Id</th>
-                        <th>Username</th>
-                        <th>Admin?</th>
-                        <th>edit</th>
-                    </tr>
-                    {% for user in users %}
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="content-block">
+                    <h1>Users</h1>
+                    <table class="table table-striped not-centered">
                         <tr>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.username }}</td>
-                            <td>
-                                {% for role in user.roles %}
-                                    {% if role == "ROLE_SUPERADMIN" %}
-                                        superadmin
-                                    {% elseif role == "ROLE_ADMIN" %}
-                                        admin
-                                    {% elseif role == "ROLE_SUPEROPA" %}
-                                        superopa
-                                    {% endif %}
-                                {% endfor %}
-                            </td>
-                            <td>
-                                <a href="{{ path('superadmin', {'user': user.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil">edit</span></a>
-                            </td>
+                            <th>Id</th>
+                            <th>Username</th>
+                            <th>Admin?</th>
+                            <th>edit</th>
                         </tr>
-                    {% endfor %}
-                </table>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.username }}</td>
+                                <td>
+                                    {% for role in user.roles %}
+                                        {% if role == "ROLE_SUPERADMIN" %}
+                                            superadmin
+                                        {% elseif role == "ROLE_ADMIN" %}
+                                            admin
+                                        {% elseif role == "ROLE_SUPEROPA" %}
+                                            superopa
+                                        {% endif %}
+                                    {% endfor %}
+                                </td>
+                                <td>
+                                    <a href="{{ path('superadmin', {'user': user.id}) }}" class="btn btn-xs btn-success"><span class="fa fa-pencil">edit</span></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
             </div>
-        </div>
-    </div>
 {% endblock %}

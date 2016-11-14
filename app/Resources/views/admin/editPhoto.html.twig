@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 {% use "form_div_layout.html.twig" %}
 {% block body %}
-    <div class="welcome">
-        <div class="text-center">
-            <h1>Verander hier de informatie over je foto</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <div class="content-block">
+                        <h1>Verander hier de informatie over je foto</h1>
+                        <img src="/uploads/photos/{{ photo.file }}" alt="" width="150px">
+                        {{ form_start(form) }}
+                        {{ form_row(form.title) }}
+                        {{ form_row(form.description) }}
+                        {{ form_row(form.folder) }}
+                        <button type="submit" class="btn btn-primary" formnovalidate>Verander</button>
+                        {{ form_end(form, {'render_rest': false }) }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <img src="/uploads/photos/{{ photo.file }}" alt="" width="150px">
-        {{ form_start(form) }}
-        {{ form_row(form.title) }}
-        {{ form_row(form.description) }}
-        {{ form_row(form.folder) }}
-        <button type="submit" class="btn btn-primary" formnovalidate>Verander</button>
-        {{ form_end(form, {'render_rest': false }) }}
-    </div>
 {% endblock %}

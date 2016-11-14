@@ -1,24 +1,38 @@
 {% extends 'base.html.twig' %}
 {% use "form_div_layout.html.twig" %}
 {% block body %}
-   <div class="welcome">
-   <div class="text-center">
-   <h1>Voeg hier een foto toe</h1>
-   </div>
-   {{ form_start(form) }}
-   {{ form_row(form.title, {
-      'label': 'Titel'
-   }) }}
-   {{ form_row(form.description, {
-      'label': 'Beschrijving'
-   }) }}
-   {{ form_row(form.file, {
-      'label': 'Selecteer een bestand'
-   }) }}
-   {{ form_row(form.folder, {
-      'label': 'Kies een mapje'
-   }) }}
-   <button type="submit" class="btn btn-primary" formnovalidate>Voeg toe/button>
-   {{ form_end(form) }}
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="content-block">
+               <h2>Voeg een foto toe</h2>
+               <p>Biodiesel synth poutine tumblr brooklyn fanny pack, yr echo park irony paleo.
+                  Freegan mlkshk banjo small batch, yuccie beard intelligentsia green juice.
+                  Umami slow-carb aesthetic offal food truck sustainable readymade photo booth.
+                  Poutine microdosing slow-carb etsy. Tote bag lyft blue bottle squid chartreuse.
+                  Crucifix disrupt keytar,try-hard heirloom 8-bit enamel pin waistcoat bitters
+                  forage etsy subway tile.Air plant bitters slow-carb skateboard literally.</p>
+               </div>
+            <div class="content-block">
+               <div class="form">
+                  {{ form_start(form) }}
+                  {{ form_row(form.title, {
+                     'label': 'Titel'
+                  }) }}
+                  {{ form_row(form.description, {
+                     'label': 'Beschrijving'
+                  }) }}
+                  {{ form_row(form.file, {
+                     'label': 'Selecteer een bestand'
+                  }) }}
+                  {{ form_row(form.folder, {
+                     'label': 'Kies een mapje'
+                  }) }}
+                  <button type="submit" class="btn btn-primary" formnovalidate>Voeg toe</button>
+                  {{ form_end(form) }}
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
 {% endblock %}

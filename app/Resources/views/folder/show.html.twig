@@ -1,23 +1,39 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-   <div class="text-center">
-      <h1>{{ folder.title }}</h1>
-      <h3>{{ folder.description }}</h3>
-      <div class="container">
-         <div class="row">
-            {% for photo in photos %}
-               <div class="col-xs-4 col-sm-3 col-md-2">
-                  <div class="preview-photo" >
-                     <a href="{{ path('folder_photo_show', {'folderId': folder.id, 'photo': loop.index }) }}">
-                        <img src="/uploads/photos/{{ photo.file }}" alt="" height="150px" width="150px" >
-                     </a> <br>
-                     {{ photo.title }}
-                  </div>
-               </div>
-            {% endfor %}
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="content-block">
+               <h1>{{ folder.title }}</h1>
+               <p>{{ folder.description }}</p>
+            </div>
          </div>
-         <a href="{{ path('all_folders') }}" class="menu-folder btn btn-success">Terug naar alle mapjes</a><br><br><br><br>
       </div>
 
-
+      <div class="row">
+         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="content-block">
+               <div class="row">
+                  {% for photo in photos %}
+                     <div class="col-xs-4 col-sm-3">
+                        <div class="preview-photo">
+                           <a href="{{ path('folder_photo_show', {'folderId': folder.id, 'photo': loop.index }) }}">
+                              <img src="/uploads/photos/{{ photo.file }}" alt="" height="150px" width="150px" >
+                           </a> <br>
+                           {{ photo.title }}
+                        </div>
+                     </div>
+                  {% endfor %}
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+            <div class="content-block">
+               <a href="{{ path('all_folders') }}" class="menu-folder btn btn-primary">Terug naar alle mapjes</a>
+            </div>
+         </div>
+      </div>
+   </div>
 {% endblock %}

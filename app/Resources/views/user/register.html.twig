@@ -3,8 +3,8 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="welcome">
+            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                <div class="content-block">
                 <h1>Meld jezelf aan!</h1><br>
                 {{ form_start(form) }}
                 {{ form_row(form.username, {
@@ -23,5 +23,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

@@ -3,8 +3,8 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="welcome">
+            <div class="col-xs-8 col-sm-8 col-sm-offset-2">
+                <div class="content-block">
                     <p>Oeps! Je moet eerst inloggen om dit te kunnen doen.</p>
                     {% if error %}
                         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -20,5 +20,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
