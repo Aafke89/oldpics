@@ -19,7 +19,3 @@ monolog:
             level: debug
         console:
             type:  console
-
-doctrine:
-    dbal:
-        url: "%env(HEROKU_POSTGRESQL_BLACK_URL)%"
