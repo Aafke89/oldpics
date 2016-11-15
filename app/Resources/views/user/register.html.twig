@@ -3,22 +3,24 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
                 <div class="content-block">
-                <h1>Meld jezelf aan!</h1><br>
-                {{ form_start(form) }}
-                {{ form_row(form.username, {
-                    'label': 'Vul hier je naam in'
-                }) }}
-                {{ form_row(form.plainPassword.first, {
-                    'label': 'Wachtwoord'
-                }) }}
-                {{ form_row(form.plainPassword.second, {
-                    'label': 'Herhaal je wachtwoord'
-                })  }} <br>
-                <button type="submit" class="btn btn-success">Registreer mij!</button>
-                {{ form_end(form) }}
-                    <br><br> <a href="{{ path('user_login') }}">Ik ben al een gebruiker!</a>
+                    <div class="form">
+                        <h1>Meld jezelf aan!</h1><br>
+                        {{ form_start(form) }}
+                        {{ form_row(form.username, {
+                            'label': 'Vul hier je naam in'
+                        }) }}
+                        {{ form_row(form.plainPassword.first, {
+                            'label': 'Wachtwoord'
+                        }) }}
+                        {{ form_row(form.plainPassword.second, {
+                            'label': 'Herhaal je wachtwoord'
+                        })  }} <br>
+                        <button type="submit" class="btn btn-primary">Registreer mij!</button>
+                        {{ form_end(form) }}
+                            <br><br> <a href="{{ path('user_login') }}">Ik ben al een gebruiker!</a>
+                    </div>
                 </div>
             </div>
         </div>
