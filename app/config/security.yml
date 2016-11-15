@@ -4,6 +4,12 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+        in_memory:
+            memory:
+                users:
+                    admin:
+                        password: superadmin
+                        roles: 'ROLE_SUPERADMIN'
         our_users:
             entity: { class: AppBundle\Entity\User, property: username }
     encoders:
