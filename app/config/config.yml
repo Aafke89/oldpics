@@ -83,3 +83,4 @@ bravesheep_database_url:
     urls:
         default:
             url: %database_url%
+            prefix: database_
