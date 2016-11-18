@@ -35,9 +35,9 @@ security:
             ROLE_ADMIN: [ROLE_SUPEROPA]
 
     access_control:
-#        - {path: ^/superadmin, roles: ROLE_SUPERADMIN }
-#        - {path: ^/admin, roles: ROLE_ADMIN }
-#        - {path: ^/folder, roles: ROLE_SUPEROPA}
+        - {path: ^/superadmin, roles: ROLE_SUPERADMIN }
+        - {path: ^/admin, roles: ROLE_ADMIN }
+        - {path: ^/folder, roles: ROLE_SUPEROPA}
 
 
 
