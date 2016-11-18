@@ -28,9 +28,23 @@
     {% endif %}
 </header>
 <div class="main-content">
-    {% for msg in app.session.flashBag.get('success') %}
-        <div class="alert alert-success">{{ msg }}</div>
-    {% endfor %}
+    <div class="container">
+        {% for msg in app.session.flashBag.get('success') %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <div class="alert alert-success">{{ msg }}</div>
+                </div>
+            </div>
+        {% endfor %}
+        {% for msg in app.session.flashBag.get('error') %}
+            <div class="row">
+                <div class="col-xs-12 col-sm-1- col-sm-offset-1">
+                    <div class="alert alert-danger">{{ msg }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
     {% block body %}
 
     {% endblock %}
