@@ -60,7 +60,7 @@ class Photo
     private $createdAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="photo")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="photo")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $user;
