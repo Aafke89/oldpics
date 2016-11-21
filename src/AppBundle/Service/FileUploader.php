@@ -18,17 +18,29 @@ class FileUploader
     public function __construct($targetDir)
     {
         $this->targetDir = $targetDir;
+
     }
 
     public function upload(UploadedFile $file)
     {
+        \Cloudinary::config([
+            "cloud_name" => "hqpsx2eiv",
+            "api_key" => "991218623932461",
+            "api_secret" => "5_cjYYcO6wm1if2HotsZ57QGAzs"
+        ]);
+
         $extension = $file->guessExtension();
         $fileName = md5(uniqid()).'.'.$extension;
 
-        $file->move(
-            $this->targetDir, $fileName );
+        $cloudinary_array = \Cloudinary\Uploader::upload("$file");
 
-        return $fileName;
+//
+//        $file->move(
+//            $this->targetDir, $fileName );
+
+
+
+        return $cloudinary_array["url"];
     }
 
 }

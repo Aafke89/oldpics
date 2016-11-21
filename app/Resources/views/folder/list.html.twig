@@ -19,13 +19,13 @@
                             <div class="preview-folder">
                                 <b>{{ folder.title }}</b> <br><br>
                                 {% if folder.photos is not empty %}
-                                        <a href="{{ path('folder_show', {'folderId': folder.id }) }}">
-                                            <img src="/uploads/photos/{{ folder.photos|first.file }}" width="150px">
-                                        </a>
+                                    <a href="{{ path('folder_show', {'folderId': folder.id }) }}">
+                                        <img src="{{ folder.photos|first.file }}" width="150px">
+                                    </a>
                                 {% else %}
-                                        Er staan nog geen foto's in dit mapje!
+                                    Er staan nog geen foto's in dit mapje!
                                 {% endif %} <br><br>
-                                    {{ folder.description }}
+                                {{ folder.description | truncate(100)  }}
                             </div>
                         </div>
                 {% endfor %}

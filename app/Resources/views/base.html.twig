@@ -32,19 +32,20 @@
         {% for msg in app.session.flashBag.get('success') %}
             <div class="row">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <br>
                     <div class="alert alert-success">{{ msg }}</div>
                 </div>
             </div>
         {% endfor %}
         {% for msg in app.session.flashBag.get('error') %}
             <div class="row">
+                <br>
                 <div class="col-xs-12 col-sm-1- col-sm-offset-1">
                     <div class="alert alert-danger">{{ msg }}</div>
                 </div>
             </div>
         {% endfor %}
     </div>
-
     {% block body %}
 
     {% endblock %}
@@ -53,6 +54,11 @@
 {% block javascripts %}
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://use.fontawesome.com/0ec60d3fcd.js"></script>
+    <script src="https://api.filestackapi.com/filestack.js"></script>
+    <script type="text/javascript">
+        filepicker.setKey("ATJ1Qh2TbRWKx2OjH83gsz");
+        filepicker.pick(picker_options, onSuccess(Blob){}, onError(FPError){}, onProgress(FPProgress){});
+    </script>
 {% endblock %}
 </body>
 </html>

@@ -6,7 +6,7 @@
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1">
                     <div class="content-block">
                         <p class="pull-right">Je bekijkt nu: <b>{{ folder.title }} </b></p>
-                        <img src="/uploads/photos/{{ photo.file }}" alt="" width="100%" > <br>
+                        <img src="{{ photo.file }}" alt="" width="100%" > <br>
                         <b>{{ photo.title }}</b> <br>
                         <p>{{ photo.description }}</p> <br>
                         {{ knp_pagination_render(photos) }}
