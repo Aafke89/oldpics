@@ -79,8 +79,8 @@ knp_paginator:
         pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig    # sliding pagination controls template
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
 
-bravesheep_database_url:
-    urls:
-        default:
-            url: %database_url%
-            prefix: database_
+#bravesheep_database_url:
+#    urls:
+#        default:
+#            url: %database_url%
+#            prefix: database_

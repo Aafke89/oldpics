@@ -6,7 +6,7 @@ parameters:
 services:
     app.photo_uploader:
         class: AppBundle\Service\FileUploader
-        arguments: ['%photo_directory%']
+        arguments: ['%photo_directory%', "@service_container"]
 
     app.security.login_form_authenticator:
         class: AppBundle\Security\LoginAuthenticator
