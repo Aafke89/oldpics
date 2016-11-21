@@ -31,7 +31,7 @@ class SuperAdminController extends Controller
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', 'User has now a new role! So cool!');
+            $this->addFlash('success', 'Deze gebruiker heeft een nieuwe rol. Supercool!');
 
             return $this->redirectToRoute('admin_home');
         }

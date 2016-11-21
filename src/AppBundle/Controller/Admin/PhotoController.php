@@ -53,7 +53,7 @@ class PhotoController extends Controller
 
             $this->addFlash(
                 'success',
-                'Gelukt! Deze foto is nu zichtbaar voor opa en oma! Nog eentje?'
+                'Gelukt! Deze foto is nu zichtbaar voor Ger en Theo! Nog eentje?'
             );
             return $this->redirectToRoute('add_photo');
         }
@@ -154,7 +154,7 @@ class PhotoController extends Controller
 
             $this->addFlash(
                 'success',
-                'Gelukt! Deze foto\'s zijn nu zichtbaar voor opa en oma! Nog eentje?'
+                'Gelukt! Deze foto\'s zijn nu zichtbaar voor Ger en Theo! Nog eentje?'
             );
 
             return $this->redirectToRoute('admin_home');
