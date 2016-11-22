@@ -1,1 +1,21 @@
-Hoi hallo je hebt nog geen rol!
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1">
+                <div class="content-block">
+                    <div class="form">
+                        <h1>Hoi {{ app.user.username }}!</h1>
+                        <p>Leuk dat je ook wat foto's wilt toevoegen.
+                            Het registreren is gelukt.
+                            Helaas heb je nog geen toegang tot deze site.
+                            Vraag Aafke even om je de juiste toestemming te geven zodat je aan de slag kunt gaan met het toevoegen van foto's!
+                            </p>
+
+                        <a href="{{ path('logout') }}" title="Log uit"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
