@@ -34,15 +34,27 @@ Een Supersimpele inteface om foto's te delen.
 
 **(Eventueel) nog toe te voegen**
 * IP-authentication voor SUPEROPA of op andere manier versimpelen?
-* ADMIN kan meerdere foto's in een keer toevoegen en/of dit op een andere manier makkelijk maken (folder al invullen of PhotoForm integreren in FolderForm?)
-* Mooi maken CSS en betere Twig met templates en shared menu's
 * Structuur verbeteren/AdminBundles toevoegen
-* ........
+* Home Button SuperOpa
+* Paginering aan zijkant ipv onderaan de foto
 
 
 ***____________________________________________________***
 
+**Opzet**
+* Run composer install
+* Give right permissions to var 
+* Run php bin/console doctrine:schema:create
+* Run php bin/console doctrine:schema:update --force
+* ....
+
+***____________________________________________________***
+
 **Gebruikt**
+* Symfony 3.1
+* PHP 5.6
 * Alice/fixtures
 * Knp Paginator
-* ...
+* Cloudinary
+* Heroku 
+* Postgres

@@ -17,3 +17,6 @@
 /web/uploads/
 /.idea/*
 bin.
+/.idea/
+var/cache/
+var/logs/
