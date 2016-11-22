@@ -22,4 +22,5 @@ monolog:
 
 doctrine:
     dbal:
-        url: "%env(DATABASE_URL)%"
+        url: "%database_url%"
+
