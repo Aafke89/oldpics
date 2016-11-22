@@ -74,6 +74,13 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @Route("/nieuw", name="new_user")
+     */
+    public function newUserAction(){
+        return $this->render('user/newuser.html.twig');
+    }
+
 
 
 }
