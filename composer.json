@@ -68,7 +68,10 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml",
             "env-map": {
-                "database_url": "DATABASE_URL"
+                "database_url": "DATABASE_URL",
+                "cloudinary_api_key": "CLOUDINARY_API_KEY",
+                "cloudinary_secret_api": "CLOUDINARY_SECRET_API",
+                "cloudinary_name": "CLOUDINARY_NAME"
             }
         }
     }
