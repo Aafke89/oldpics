@@ -2,6 +2,14 @@ body {
     background-color: #f4f1f0;
 }
 
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 .content-block {
     margin: auto;
     margin-top: 20px;
@@ -26,19 +34,36 @@ body {
 }
 
 .preview-folder {
-    height: 280px;
-    margin: 10px;
-    padding: 10px;
+    font-size: 18px;
+    height: 400px;
+    margin: 20px;
+    padding: 20px;
     box-shadow:  -4px -4px 16px -7px rgba(250, 150, 159, 0.2);
 }
 
 .preview-photo {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     height: 180px;
+    width: 150px;
+    position: relative;
 }
 
-.crop {
+.crop-medium {
     object-fit: cover;
+    height: 200px;
+    width: 200px;
+}
+
+.crop-small {
+    object-fit: cover;
+    height: 150px;
+    width: 150px;
+}
+
+.description {
+    width: 80%;
+    margin: auto;
+    font-size: 22px;
 }
 
 .btn-primary {
@@ -47,6 +72,7 @@ body {
     color: black;
     margin: 10px;
  }
+
 .btn-primary:hover  {
     background-color: #62d9dd;
     border: #62d9dd;
