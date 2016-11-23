@@ -37,6 +37,10 @@ body {
     height: 180px;
 }
 
+.crop {
+    object-fit: cover;
+}
+
 .btn-primary {
      background-color: #47d3d7;;
      border: #47d3d7;;

@@ -30,13 +30,16 @@ class Folder
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank( message = "Vul een titel in")
+     * @Assert\Length(
+     *     max = 25,
+     *     maxMessage ="Een titel mag uit maximaal {{ limit }} tekens bestaan.")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\NotBlank()
+     * @Assert\NotBlank( message = "Voeg een beschrijving toe")
      */
     private $description;
 

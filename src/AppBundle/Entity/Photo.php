@@ -28,6 +28,9 @@ class Photo
 
     /**
      * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(
+     *     max = 25,
+     *     maxMessage = "Een titel mag uit maximaal {{ limit }} tekens bestaan.")
      */
     private $title = null;
 
@@ -39,6 +42,7 @@ class Photo
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message = "Voeg een foto toe")
      * @Assert\File(
      *     maxSize = "3M",
      *     mimeTypes = {"image/jpeg", "image/png"},
