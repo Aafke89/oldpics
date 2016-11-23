@@ -11,6 +11,7 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\BrowserKit\Request;
 
 class MainController extends Controller
 {
@@ -20,14 +21,16 @@ class MainController extends Controller
     public function homepageAction()
     {
         $authChecker = $this->get('security.authorization_checker');
+        $request = $this->container->get('request_stack')->getMasterRequest();
+        $ip_whitelist = $this->container->getParameter('ip_whitelist');
 
         if ($authChecker->isGranted('ROLE_ADMIN')) {
-            // Opa of Oma
             return $this->redirectToRoute('admin_home');
-        } elseif ($authChecker->isGranted('ROLE_SUPEROPA')) {
-            // User is an authenticated User.
+        } elseif ($authChecker->isGranted('ROLE_SUPEROPA')
+            or $request->getClientIp() == $ip_whitelist
+        ) {
             return $this->redirectToRoute('all_folders');
-        } elseif ($authChecker->isGranted('IS_AUTHENTICATED_FULLY')){
+        } elseif ($authChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('new_user');
         }
 

@@ -37,8 +37,7 @@ security:
     access_control:
         - {path: ^/superadmin, roles: ROLE_SUPERADMIN }
         - {path: ^/admin, roles: ROLE_ADMIN }
-        - {path: ^/folder, roles: ROLE_SUPEROPA}
-
+        - {path: ^/folder, allow_if: "'%ip_whitelist%' == request.getClientIp() or has_role('ROLE_SUPEROPA')"}
 
 
 

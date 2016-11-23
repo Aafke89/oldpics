@@ -71,7 +71,8 @@
                 "database_url": "DATABASE_URL",
                 "cloudinary_api_key": "CLOUDINARY_API_KEY",
                 "cloudinary_secret_api": "CLOUDINARY_SECRET_API",
-                "cloudinary_name": "CLOUDINARY_NAME"
+                "cloudinary_name": "CLOUDINARY_NAME",
+                "Ip_whitelist": "IP_WHITELIST"
             }
         }
     }
