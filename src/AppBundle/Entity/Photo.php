@@ -40,7 +40,7 @@ class Photo
     /**
      * @ORM\Column(type="string")
      * @Assert\File(
-     *     maxSize = "3000k",
+     *     maxSize = "3M",
      *     mimeTypes = {"image/jpeg", "image/png"},
      *     mimeTypesMessage = "Please upload a valid image"
      * )
