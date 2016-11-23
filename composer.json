@@ -72,7 +72,7 @@
                 "cloudinary_api_key": "CLOUDINARY_API_KEY",
                 "cloudinary_secret_api": "CLOUDINARY_SECRET_API",
                 "cloudinary_name": "CLOUDINARY_NAME",
-                "Ip_whitelist": "IP_WHITELIST"
+                "ip_whitelist": "IP_WHITELIST"
             }
         }
     }
