@@ -33,7 +33,7 @@ security:
         - {path: ^/admin, role: ROLE_ADMIN }
         -
             path: ^/folder
-            allow_if: "'%ip_whitelist%' == request.getClientIp() or has_role('ROLE_SUPEROPA')"
+            allow_if: "'95.97.240.66' == request.getClientIp() or has_role('ROLE_SUPEROPA')"
 #        - {path: ^/folder, allow_if: "'95.97.240.66' == request.getClientIp() or has_role('ROLE_SUPEROPA')"}
 
 
