@@ -1,0 +1,19 @@
+{# default Sliding pagination control implementation #}
+
+{% if pageCount > 1 %}
+    <div class="pagination">
+        {% if next is defined %}
+            <span class="next">
+            <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </a>
+        </span>
+          {% elseif current == last%}
+              <span class="next">
+            <a href="{{ path('all_folders') }}">
+                <i class="fa fa-angle-double-right"" aria-hidden="true"></i>
+            </a>
+        </span>
+        {% endif %}
+    </div>
+{% endif %}

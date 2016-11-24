@@ -1,34 +1,70 @@
 {% extends 'base.html.twig' %}
+    {%  block admin %}
+    {% endblock %}
 {% block body %}
     <div class="container">
         <div class="row">
             {% for photo in photos %}
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                <div class="col-xs-12">
+                        <span class="links pull-left">
+                                <i class="fa fa-camera"></i>
+                             /{{ folder.title }}/{{ photo.title | default('geen titel') }}
+                        </span>
+                            {%  if is_granted('edit', photo) %}
+                                <span class="links pull-right">
+                                    <a href="{{ path('edit_photo', { 'photo': photo.id }) }}">
+                                        <i class="fa fa-pencil"></i>/Bewerk
+                                    </a>
+                                </span>
+                            {% endif %}
+                            {% if is_granted('delete', photo) %}
+                                <span class="links pull-right">
+                                    <a href="{{ path('delete_photo', { 'photo': photo.id}) }}"
+                                       onclick="return confirm('Weet je het zeker? deze foto zal verwijderd worden!')">
+                                        <i class="fa fa-trash"></i>/Verwijder
+                                    </a>
+                                </span>
+                            {% endif %}
+                        <span class="links pull-right">
+                             <a href="{{ path('home') }}">
+                                   <i class="fa fa-home"></i>/home
+                             </a>
+                        </span>
+                        <span class=" links pull-right">
+                            <a href="{{ path('folder_show', {'folderId': folder.id }) }}">
+                                <i class="fa fa-folder"></i> /{{ folder.title }}
+                            </a>
+                        </span>
+                </div>
+                <div class="col-xs-12">
                     <div class="content-block">
-                        <p class="pull-right">Je bekijkt nu: <b>{{ folder.title }} </b></p>
-                        <img src="{{ photo.file }}" alt="" width="100%" > <br> <br>
-                        <b>{{ photo.title }}</b> <br>
-                        <p>{{ photo.description }}</p> <br>
-                        {{ knp_pagination_render(photos) }}
+                        <div class="photo-view">
+                        <span class="custom-previous">
+                            {{ knp_pagination_render(photos, 'templates/pagination_previous.html.twig') }}
+                        </span>
+                            <span>
+                                 <img src="{{ photo.file }}" alt="" width="100%" >
+                            </span>
+                        <span class="custom-next">
+                            {{ knp_pagination_render(photos, 'templates/pagination_next.html.twig') }}
+                        </span>
+                        </div>
+                        {{ knp_pagination_render(photos, 'templates/pagination.html.twig') }}
                     </div>
                 </div>
-            {% endfor %}
+             {% endfor %}
 
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                <div class="content-block">
-                    {% for photo in photos %}
-                        {%  if is_granted('edit', photo) %}
-                            <a href="{{ path('edit_photo', { 'photo': photo.id }) }}" class="btn btn-primary">Bewerk </a>
-                        {% endif %}
-                        {% if is_granted('delete', photo) %}
-                            <a href="{{ path('delete_photo', { 'photo': photo.id}) }}"
-                               onclick="return confirm('Weet je het zeker? deze foto zal verwijderd worden!)"
-                               class="btn btn-danger">Verwijder</a>
-                        {% endif %} <br>
-                    {% endfor %}
-                    <a href="{{ path('folder_show', {'folderId': folder.id }) }}" class="btn btn-primary">Terug naar alle foto's uit deze map</a>
+
+                <div class="col-xs-12">
+                    <div class="content-block">
+                        {% for photo in photos %}
+                            <b>{{ photo.title }}</b>
+                            <p>{{ photo.description }}</p>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 {% endblock %}
+
+

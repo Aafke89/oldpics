@@ -13,8 +13,11 @@ use AppBundle\Form\FolderForm;
 use AppBundle\Form\MultiplePhotosForm;
 use AppBundle\Form\PhotoForm;
 use AppBundle\Security\UserVoter;
+use Monolog\ErrorHandler;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 
 class PhotoController extends Controller
@@ -32,7 +35,16 @@ class PhotoController extends Controller
             $photo = $form->getData();
 
             // Add the file to web/uploads
+
             $file = $photo->getFile();
+            if ($file == null) {
+                $form->get('file')->addError(new FormError('Voeg een foto toe'));
+                return $this->render(
+                    'admin/newphoto.html.twig', [
+                        'form' => $form->createView(),
+                    ]
+                );
+            }
             $fileName = $this->get('app.photo_uploader')->upload($file);
             $photo->setFile($fileName);
 

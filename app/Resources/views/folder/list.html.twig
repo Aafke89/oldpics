@@ -18,19 +18,23 @@
                 <div class="content-block">
                     <div class="row">
                 {% for folder in folders  %}
+                        {% if folder.photos is not empty %}
                         <div class="col-xs-2 col-sm-4">
                             <div class="preview-folder">
                                 <b>{{ folder.title }}</b> <br><br>
-                                {% if folder.photos is not empty %}
                                     <a href="{{ path('folder_show', {'folderId': folder.id }) }}">
                                         <img src="{{ folder.photos|first.file }}" class="crop-medium">
                                     </a>
-                                {% else %}
-                                    Er staan nog geen foto's in dit mapje!
-                                {% endif %} <br><br>
-                                {{ folder.description | truncate(60)  }}
                             </div>
                         </div>
+                        {% elseif is_granted('ROLE_ADMIN') %}
+                            <div class="col-xs-2 col-sm-4">
+                                <div class="preview-folder">
+                                    <b>{{ folder.title }}</b> <br><br>
+                                    Lege mapjes zien Opa en Oma niet. Voeg een foto toe!
+                                </div>
+                            </div>
+                        {% endif %}
                 {% endfor %}
                     </div>
                 </div>

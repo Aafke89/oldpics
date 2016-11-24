@@ -35,7 +35,7 @@ a:hover {
 
 .preview-folder {
     font-size: 18px;
-    height: 400px;
+    height: 300px;
     margin: 20px;
     padding: 20px;
     box-shadow:  -4px -4px 16px -7px rgba(250, 150, 159, 0.2);
@@ -63,7 +63,7 @@ a:hover {
 .description {
     width: 80%;
     margin: auto;
-    font-size: 22px;
+    font-size: 18px;
 }
 
 .btn-primary {
@@ -125,3 +125,66 @@ a:hover {
 .custom-navbar li a:hover {
     background-color: #fa969f;
 }
+
+.photo-view img {
+    max-width: 90%;
+    max-height: 70vh;
+    margin: auto;
+    object-fit: contain;
+}
+
+.photo-view .custom-previous a {
+    font-size: 40px;
+    text-decoration: none;
+    padding-right: 10px;
+    color: #b1b1b1;
+}
+.photo-view .custom-next a {
+    padding-left: 10px;
+    font-size: 40px;
+    text-decoration: none;
+    color: #b1b1b1;
+}
+
+.next a, .previous a, .last a, .first a {
+    font-size: 20px;
+    color: #b1b1b1;
+}
+.page a
+{
+    font-size: 30px;
+    color: #b1b1b1;
+}
+
+.current
+{
+    font-size: 30px;
+    color: #fa969f;
+}
+
+.links, .links a {
+    font-size: 18px;
+    padding: 10px;
+    margin-top: 20px;
+    color: black;
+    margin-bottom: -20px;
+}
+
+.links a:hover {
+    color: #fa969f;
+}
+
+@media screen and (max-width: 800px) {
+    .photo-view .custom-previous a, .photo-view .custom-next a{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .links, .links a {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+
+

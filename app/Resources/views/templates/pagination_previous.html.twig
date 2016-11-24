@@ -1,0 +1,13 @@
+{# default Sliding pagination control implementation #}
+
+{% if pageCount > 1 %}
+    <div class="pagination">
+        {% if previous is defined %}
+        <span class="previous">
+        <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+        </span>
+        {% endif %}
+    </div>
+{% endif %}

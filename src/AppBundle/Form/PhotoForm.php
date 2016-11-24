@@ -19,7 +19,7 @@ class PhotoForm extends AbstractType
             ->add('title', TextType::class)
             ->add('description', TextType::class)
             ->add('file', FileType::class, [
-                'data_class' => null,
+                'data_class' => null
             ])
             ->add('folder', EntityType::class, [
                     'class' => Folder::class

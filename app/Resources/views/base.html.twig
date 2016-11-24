@@ -14,16 +14,9 @@
 <body>
 <header>
     {%  if is_granted('ROLE_ADMIN') or is_granted ('ROLE_SUPERADMIN')%}
-       {{ include ('admin/_admin_menu.html.twig') }}
-    {% else %}
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-                        <a class="btn btn-primary pull-right" href="{{ path('home') }}" title="home"><i class="fa fa-home" aria-hidden="true"></i>
-                             HOME</a>
-                </div>
-            </div>
-        </div>
+        {% block admin %}
+            {{ include ('admin/_admin_menu.html.twig') }}
+        {% endblock %}
     {% endif %}
 </header>
 <div class="main-content">
@@ -48,7 +41,6 @@
     {% block body %}
 
     {% endblock %}
-
 </div>
 {% block javascripts %}
     <script src="https://use.fontawesome.com/0ec60d3fcd.js"></script>

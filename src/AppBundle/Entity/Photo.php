@@ -42,11 +42,10 @@ class Photo
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message = "Voeg een foto toe")
      * @Assert\File(
      *     maxSize = "3M",
      *     mimeTypes = {"image/jpeg", "image/png"},
-     *     mimeTypesMessage = "Please upload a valid image"
+     *     mimeTypesMessage = "Voeg alsjeblieft een juist plaatje toe"
      * )
      *
      */

@@ -2,38 +2,36 @@
 {% block body %}
    <div class="container">
       <div class="row">
-         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <div class="content-block">
-               <h1>{{ folder.title }}</h1>
-               <p class="description">{{ folder.description }}</p>
-            </div>
-         </div>
-      </div>
-
-      <div class="row">
-         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <div class="content-block">
-               <div class="row">
-                  {% for photo in photos %}
-                     <div class="col-xs-4 col-sm-3">
-                        <div class="preview-photo">
-                           <a href="{{ path('folder_photo_show', {'folderId': folder.id, 'photo': loop.index }) }}">
-                              <img src="{{ photo.file }}" alt="{{ photo.title }}" class="crop-small" >
-                           </a>
-                          {{ photo.title }}
-                        </div>
-                     </div>
-                  {% endfor %}
+         {% if not is_granted('ROLE_ADMIN') %}
+               <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                  <span class="links pull-right">
+                     <a href="{{ path('home') }}">
+                        <i class="fa fa-home"></i>/home
+                     </a>
+                  </span>
                </div>
-            </div>
-         </div>
-      </div>
-      <div class="row">
-         <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-            <div class="content-block">
-               <a href="{{ path('all_folders') }}" class="menu-folder btn btn-primary">Terug naar alle mapjes</a>
-            </div>
-         </div>
+         {% endif %}
+               <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                  <div class="content-block">
+                     <h1>{{ folder.title }}</h1>
+                     <p class="description">{{ folder.description }}</p>
+                  </div>
+               </div>
+               <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                  <div class="content-block">
+                     <div class="row">
+                        {% for photo in photos %}
+                           <div class="col-xs-4 col-sm-3">
+                              <div class="preview-photo">
+                                 <a href="{{ path('folder_photo_show', {'folderId': folder.id, 'photo': loop.index }) }}">
+                                    <img src="{{ photo.file }}" alt="{{ photo.title }}" class="crop-small" >
+                                 </a>
+                              </div>
+                           </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
       </div>
    </div>
 {% endblock %}
