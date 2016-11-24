@@ -152,6 +152,14 @@ class PhotoController extends Controller
             $user = $this->getUser();
 
             foreach ($files as $file) {
+                if ($file == null) {
+                    $form->get('files')->addError(new FormError('Vergeet niet de foto\'s toe te voegen'));
+                    return $this->render(
+                        'admin/multiplephotos.html.twig', [
+                            'form' => $form->createView(),
+                        ]
+                    );
+                }
                 $photo = new Photo();
                 $fileName = $this->get('app.photo_uploader')->upload($file);
                 $photo->setFile($fileName);
