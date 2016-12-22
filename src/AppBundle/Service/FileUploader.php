@@ -34,9 +34,13 @@ class FileUploader
             "api_secret" => $this->container->getParameter('cloudinary_secret_api')
         ]);
 
-        $cloudinary_array = \Cloudinary\Uploader::upload("$file");
+        $cloudinary_array = \Cloudinary\Uploader::upload( "$file", [
+            "image_metadata" => false,
+            "angle" => "exif"
+        ]);
 
         return $cloudinary_array["url"];
+
     }
 
 }
