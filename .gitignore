@@ -20,3 +20,4 @@ bin.
 /.idea/
 var/cache/
 var/logs/
+.env
