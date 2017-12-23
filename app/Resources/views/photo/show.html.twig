@@ -52,19 +52,17 @@
                         {{ knp_pagination_render(photos, 'templates/pagination.html.twig') }}
                     </div>
                 </div>
-             {% endfor %}
 
 
                 <div class="col-xs-12">
                     <div class="content-block">
-                        {% for photo in photos %}
                             <b>{{ photo.title }}</b>
                             <p>{{ photo.description }}</p>
-                        {% endfor %}
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
+    </div>
 {% endblock %}
 
 

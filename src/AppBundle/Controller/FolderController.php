@@ -44,33 +44,25 @@ class FolderController extends Controller
     }
 
     /**
-     * @Route("/folder/{folderId}/{photo}", name="folder_photo_show")
      * @Route("/folder/{folderId}/?photo={photo}", name="folder_photo_show")
      */
     public function showPhotoAction(Request $request, Folder $folderId, $photo = 1)
     {
         $em = $this->getDoctrine()->getManager();
-        $queryBuilder = $em->getRepository('AppBundle:Photo')->createQueryBuilder('photo');
-        $queryBuilder
-            ->andWhere('photo.folder = :folder')
-            ->setParameter('folder', $folderId)
-            ->orderBy('photo.createdAt', 'DESC')
-            ->getQuery()
-            ->execute()
-        ;
-
-        $query = $queryBuilder->getQuery();
+        $query = $em->getRepository('AppBundle:Photo')
+            ->findAllPhotosFromFolder($folderId);
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query,
-            $request->query->getInt('photo', $photo)/*page number*/,
+            $request->query->getInt('photo', $photo),
             $request->query->getInt('limit', 1)
         );
 
-        return $this->render("photo/show.html.twig", [
+        return $this->render(
+            "photo/show.html.twig", [
             'photos' => $pagination,
-            'folder' => $folderId
-        ]);
+            'folder' => $folderId ]
+        );
     }
 }
