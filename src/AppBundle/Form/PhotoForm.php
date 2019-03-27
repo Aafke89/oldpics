@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Folder;
+use AppBundle\Repository\FolderRepository;
 use Faker\Provider\File;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -22,7 +23,12 @@ class PhotoForm extends AbstractType
                 'data_class' => null
             ])
             ->add('folder', EntityType::class, [
-                    'class' => Folder::class
+                    'class' => Folder::class,
+                    'query_builder' => function (FolderRepository $fr) {
+                        return $fr->createQueryBuilder('f')
+                                  ->leftJoin('f.photos', 'p')
+                                  ->orderBy('p.createdAt', 'DESC');
+                    },
             ])
             ;
     }
